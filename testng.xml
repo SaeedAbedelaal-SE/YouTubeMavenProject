@@ -3,13 +3,20 @@
 <suite name="suite1">
 	<test name="test1">
 		<classes>
-			<class name="testgrade"></class>
+			<class name="testgrade"/>
 		</classes>
 	</test>
-	
 	<test name="test2">
 		<classes>
-			<class name="testCalculator"></class>
+			<class name="testCalculator"/>
 		</classes>
 	</test>
+	<test name="test3">
+		<classes>
+			<class name="testAnn"/>
+		</classes>
+	</test>
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+	</listeners>
 </suite>

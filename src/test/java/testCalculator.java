@@ -1,4 +1,4 @@
-
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -9,28 +9,42 @@ public class testCalculator {
 
 	@DataProvider(name = "data1")
 	public Object[][] dpMethod() {
-		return new Object[][] { 
-			{ 10.0, 2.0, 5.0, "positive ,positive" }, 
-			{ 10.0, -2.0, -5.0, "positive ,negative" },
-			{ -10.0, 2.0, -5.0, "negative ,positive " }, 
-			{ -10.0, -2.0, 5.0, "negative ,negative " },
-			{ 0, 2.0, 0, "zero ,positive " }, 
-			{ 0, -2.0, 0, "zero ,negative " }, 
-				};
+		return new Object[][] { { 10.0, 2.0, 5.0, "positive ,positive" }, { 10.0, -2.0, -5.0, "positive ,negative" },
+				{ -10.0, 2.0, -5.0, "negative ,positive " }, { -10.0, -2.0, 5.0, "negative ,negative " },
+				{ 0, 2.0, 0, "zero ,positive " }, { 0, -2.0, 0, "zero ,negative " }, };
+	}
 
+	@DataProvider(name = "data2")
+	public Object[][] dpMethod1() {
+		return new Object[][] { { 10, 0 } };
+
+	}
+	
+	@Test(priority = 2)
+	public void test111() {
+		Assert.assertTrue(true);
+	}
+
+	@Test(priority = 1)
+	public void test222() {
+		Assert.assertTrue(true);
 	}
 
 	@Test(dataProvider = "data1")
-	public void test1(double x, double y, double expected, String caseForNum) {
+	public void testvalid(double x, double y, double expected, String caseOFNums) {
 		double result = cal.division(x, y);
 		softassert.assertEquals(result, expected);
 		String methodName = new Object() {
 		}.getClass().getEnclosingMethod().getName();
-		System.out.println(methodName + " caseForNum is : " + caseForNum);
+		System.out.println(methodName + " caseofNums is : " + caseOFNums + "\n");
+	}
+
+	@Test(dataProvider = "data2", expectedExceptions = ArithmeticException.class, priority = 1)
+	public void testinvalid(double x, double y) {
+		cal.division(x, y);
 	}
 //	
 //	
-
 
 }
 
