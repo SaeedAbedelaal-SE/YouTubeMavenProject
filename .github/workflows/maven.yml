@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Saeed abedelaal workflow
+name: Saeed abedelaal new workflow
 
 on:
   push:
